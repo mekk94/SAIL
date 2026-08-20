@@ -184,21 +184,21 @@ export class AmbientBackgroundComponent implements OnInit, OnDestroy {
     ctx.rotate(this.time * 0.05);
     ctx.beginPath();
     ctx.arc(0, 0, this.width * 0.25, 0, Math.PI * 1.2);
-    ctx.strokeStyle = 'rgba(196, 137, 47, 0.03)';
+    ctx.strokeStyle = 'rgba(196, 137, 47, 0.08)';
     ctx.lineWidth = 1.5;
     ctx.stroke();
 
     ctx.rotate(Math.PI / 4 + this.time * -0.08);
     ctx.beginPath();
     ctx.arc(0, 0, this.width * 0.22, 0, Math.PI * 0.8);
-    ctx.strokeStyle = 'rgba(196, 137, 47, 0.04)';
+    ctx.strokeStyle = 'rgba(196, 137, 47, 0.1)';
     ctx.lineWidth = 1;
     ctx.stroke();
 
     ctx.rotate(Math.PI / 2 + this.time * 0.1);
     ctx.beginPath();
     ctx.arc(0, 0, this.width * 0.19, 0, Math.PI * 1.5);
-    ctx.strokeStyle = 'rgba(196, 137, 47, 0.05)';
+    ctx.strokeStyle = 'rgba(196, 137, 47, 0.12)';
     ctx.lineWidth = 0.5;
     ctx.stroke();
     ctx.restore();
@@ -208,13 +208,13 @@ export class AmbientBackgroundComponent implements OnInit, OnDestroy {
     ctx.rotate(this.time * -0.04);
     ctx.beginPath();
     ctx.arc(0, 0, this.width * 0.3, 0, Math.PI * 0.7);
-    ctx.strokeStyle = 'rgba(196, 137, 47, 0.02)';
+    ctx.strokeStyle = 'rgba(196, 137, 47, 0.06)';
     ctx.lineWidth = 2;
     ctx.stroke();
     ctx.restore();
 
     // Draw grid
-    ctx.strokeStyle = 'rgba(196, 137, 47, 0.025)';
+    ctx.strokeStyle = 'rgba(196, 137, 47, 0.06)';
     ctx.lineWidth = 0.5;
     const gridSize = 80;
     for (let x = 0; x < this.width; x += gridSize) {
@@ -236,7 +236,7 @@ export class AmbientBackgroundComponent implements OnInit, OnDestroy {
       const to = this.nodes[route.to];
 
       ctx.beginPath();
-      ctx.strokeStyle = 'rgba(196, 137, 47, 0.06)';
+      ctx.strokeStyle = 'rgba(196, 137, 47, 0.15)';
       ctx.lineWidth = 0.5;
 
       // Curved route
