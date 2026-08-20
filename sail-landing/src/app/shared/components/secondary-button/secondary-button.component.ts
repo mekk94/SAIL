@@ -1,56 +1,11 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input, output, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-secondary-button',
   standalone: true,
-  template: `
-    <button
-      class="btn-secondary"
-      [type]="type()"
-      (click)="clicked.emit($event)"
-    >
-      <span class="btn-text">{{ label() }}</span>
-    </button>
-  `,
-  styles: [`
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 13px 32px;
-      background: transparent;
-      color: var(--sail-ink);
-      font-size: var(--text-base);
-      font-weight: var(--font-weight-semibold);
-      border-radius: var(--radius-full);
-      border: 1.5px solid var(--sail-border);
-      cursor: pointer;
-      transition: border-color var(--duration-base) var(--ease-out),
-                  color var(--duration-base) var(--ease-out),
-                  background var(--duration-base) var(--ease-out);
-
-      &:hover {
-        border-color: var(--sail-gold);
-        color: var(--sail-gold);
-        background: var(--sail-gold-subtle);
-      }
-
-      &:active {
-        transform: translateY(0);
-      }
-    }
-
-    .btn-text {
-      position: relative;
-      z-index: 1;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .btn-secondary {
-        transition: none;
-      }
-    }
-  `]
+  templateUrl: './secondary-button.component.html',
+  styleUrl: './secondary-button.component.scss',
 })
 export class SecondaryButtonComponent {
   readonly label = input.required<string>();

@@ -1,0 +1,9 @@
+<button
+      class="btn-primary"
+      [type]="type()"
+      [disabled]="disabled()"
+      (click)="clicked.emit($event)"
+    >
+      <span class="btn-text">{{ label() }}</span>
+      <span class="btn-shine" aria-hidden="true"></span>
+    </button>

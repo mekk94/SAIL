@@ -1,0 +1,104 @@
+@use 'mixins' as *;
+
+    .wh {
+      position: relative;
+    }
+
+    .wh__container {
+      @include container;
+    }
+
+    .wh__header {
+      max-width: 600px;
+      margin-block-end: var(--space-2xl);
+    }
+
+    .wh__title {
+      @include heading-md;
+      margin-block-end: var(--space-sm);
+    }
+
+    .wh__subtitle {
+      @include body-lg;
+    }
+
+    .wh__layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+
+      @include laptop {
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: var(--space-2xl);
+        align-items: start;
+      }
+    }
+
+    .wh__image {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .wh__services {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+
+      @include tablet {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      @include laptop {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .wh__service-block {
+      display: flex;
+      gap: var(--space-md);
+      padding: var(--space-lg);
+      background: var(--sail-white);
+      border: 1px solid var(--sail-border);
+      border-radius: var(--radius-md);
+      transition: border-color var(--duration-base) var(--ease-out),
+                  box-shadow var(--duration-base) var(--ease-out);
+
+      &:hover {
+        border-color: rgba(196, 137, 47, 0.25);
+        box-shadow: var(--shadow-sm);
+      }
+    }
+
+    .wh__service-icon {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+      color: var(--sail-gold);
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .wh__service-text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .wh__service-title {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--sail-ink);
+    }
+
+    .wh__service-desc {
+      font-size: var(--text-sm);
+      color: var(--sail-ink-soft);
+      line-height: 1.5;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .wh__service-block { transition: none; }
+    }

@@ -1,0 +1,27 @@
+<section id="vision-mission" class="vm section">
+      <div class="vm__container">
+        <!-- Vision -->
+        <div class="vm__block vm__vision" appSectionReveal>
+          <span class="vm__label">{{ i18n.t('visionMission.visionLabel') }}</span>
+          <p class="vm__statement">{{ i18n.t('visionMission.vision') }}</p>
+        </div>
+
+        <!-- Divider -->
+        <div class="vm__divider" aria-hidden="true" appSectionReveal [revealDelay]="200" revealClass="sail-reveal-scale">
+          <div class="vm__line"></div>
+          <div class="vm__node">
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" fill="#C4892F" opacity="0.6"/>
+              <circle cx="12" cy="12" r="8" fill="none" stroke="#C4892F" stroke-width="1" opacity="0.3"/>
+            </svg>
+          </div>
+          <div class="vm__line"></div>
+        </div>
+
+        <!-- Mission -->
+        <div class="vm__block vm__mission" appSectionReveal [revealDelay]="300">
+          <span class="vm__label">{{ i18n.t('visionMission.missionLabel') }}</span>
+          <p class="vm__statement">{{ i18n.t('visionMission.mission') }}</p>
+        </div>
+      </div>
+    </section>

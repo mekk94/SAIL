@@ -1,0 +1,12 @@
+.section-title {
+      font-size: var(--text-3xl);
+      font-weight: var(--font-weight-bold);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--sail-ink);
+      margin-block-end: var(--space-md);
+
+      &--light {
+        color: var(--sail-white);
+      }
+    }

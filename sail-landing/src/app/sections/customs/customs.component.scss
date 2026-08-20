@@ -1,0 +1,110 @@
+@use 'mixins' as *;
+
+    .customs {
+      position: relative;
+    }
+
+    .customs__container {
+      @include container;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+
+      @include laptop {
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: var(--space-2xl);
+        align-items: center;
+      }
+    }
+
+    .customs__panel {
+      @include floating-panel;
+      padding: var(--space-xl);
+
+      @include laptop {
+        padding: var(--space-2xl);
+        margin-inline-end: calc(var(--space-xl) * -1);
+        position: relative;
+        z-index: 2;
+      }
+    }
+
+    .customs__title {
+      @include heading-sm;
+      margin-block-end: var(--space-xs);
+    }
+
+    .customs__subtitle {
+      @include body-base;
+      margin-block-end: var(--space-lg);
+    }
+
+    .customs__services {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .customs__service {
+      display: flex;
+      gap: var(--space-md);
+    }
+
+    .customs__service-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .customs__step-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--sail-gold-subtle);
+      color: var(--sail-gold);
+      font-size: var(--text-xs);
+      font-weight: var(--font-weight-bold);
+      border: 1px solid rgba(196, 137, 47, 0.2);
+    }
+
+    .customs__step-line {
+      flex: 1;
+      width: 1px;
+      min-height: 24px;
+      background: linear-gradient(to bottom, var(--sail-gold), transparent);
+      opacity: 0.3;
+    }
+
+    .customs__service-body {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-block-end: var(--space-sm);
+    }
+
+    .customs__service-title {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--sail-ink);
+    }
+
+    .customs__service-desc {
+      font-size: var(--text-sm);
+      color: var(--sail-ink-soft);
+      line-height: 1.5;
+    }
+
+    .customs__image {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      order: -1;
+
+      @include laptop {
+        order: 0;
+      }
+    }

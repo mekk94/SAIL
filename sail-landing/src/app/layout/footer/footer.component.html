@@ -1,0 +1,21 @@
+<footer class="footer" role="contentinfo">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <a href="#hero" class="footer__logo" (click)="scrollTo($event, 'hero')" aria-label="SAIL — Home">
+            <span class="logo-mark">S</span>
+            <span class="logo-name">SAIL</span>
+          </a>
+          <p class="footer__tagline">{{ i18n.t('footer.tagline') }}</p>
+        </div>
+
+        <nav class="footer__links" aria-label="Footer navigation">
+          <a href="#overview" (click)="scrollTo($event, 'overview')">{{ i18n.t('footer.links.overview') }}</a>
+          <a href="#freight-forwarding" (click)="scrollTo($event, 'freight-forwarding')">{{ i18n.t('footer.links.services') }}</a>
+          <a href="#contact" (click)="scrollTo($event, 'contact')">{{ i18n.t('footer.links.contact') }}</a>
+        </nav>
+
+        <div class="footer__bottom">
+          <p class="footer__copyright">{{ i18n.t('footer.copyright') }}</p>
+        </div>
+      </div>
+    </footer>

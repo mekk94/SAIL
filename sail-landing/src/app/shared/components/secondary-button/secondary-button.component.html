@@ -1,0 +1,7 @@
+<button
+      class="btn-secondary"
+      [type]="type()"
+      (click)="clicked.emit($event)"
+    >
+      <span class="btn-text">{{ label() }}</span>
+    </button>

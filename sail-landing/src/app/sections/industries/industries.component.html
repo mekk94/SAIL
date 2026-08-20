@@ -1,0 +1,47 @@
+<section id="industries" class="ind section">
+      <div class="ind__container">
+        <div class="ind__header" appSectionReveal>
+          <app-section-label
+            [label]="i18n.t('industries.label')"
+            [number]="i18n.t('industries.number')"
+          />
+          <h2 class="ind__title">{{ i18n.t('industries.title') }}</h2>
+          <p class="ind__subtitle">{{ i18n.t('industries.subtitle') }}</p>
+        </div>
+
+        <div class="ind__layout">
+          <!-- Industry Selector -->
+          <div class="ind__selector" appSectionReveal [revealDelay]="150" revealClass="sail-stagger">
+            @for (industry of industries(); track industry.name; let i = $index) {
+              <button
+                class="ind__item"
+                [class.ind__item--active]="activeIndustry() === i"
+                (click)="activeIndustry.set(i)"
+                (mouseenter)="activeIndustry.set(i)"
+              >
+                <span class="ind__item-marker" aria-hidden="true"></span>
+                <span class="ind__item-name">{{ industry.name }}</span>
+              </button>
+            }
+          </div>
+
+          <!-- Dynamic Image Area -->
+          <div class="ind__visual" appSectionReveal [revealDelay]="300" revealClass="sail-reveal-end">
+            <div class="ind__image-wrap">
+              <app-image-placeholder
+                label="IMAGE WILL BE HERE"
+                aspectRatio="16 / 10"
+                section="industries"
+              />
+            </div>
+
+            @if (activeIndustryData(); as data) {
+              <div class="ind__detail">
+                <h3 class="ind__detail-name">{{ data.name }}</h3>
+                <p class="ind__detail-desc">{{ data.description }}</p>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </section>

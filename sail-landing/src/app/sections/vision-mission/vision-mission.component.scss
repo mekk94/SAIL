@@ -1,0 +1,75 @@
+@use 'mixins' as *;
+
+    .vm {
+      position: relative;
+    }
+
+    .vm__container {
+      @include container;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-xl);
+
+      @include laptop {
+        flex-direction: row;
+        gap: var(--space-2xl);
+      }
+    }
+
+    .vm__block {
+      flex: 1;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-md);
+      max-width: 500px;
+    }
+
+    .vm__label {
+      font-size: var(--text-xs);
+      font-weight: var(--font-weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--sail-gold);
+    }
+
+    .vm__statement {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.35;
+      color: var(--sail-ink);
+      text-wrap: balance;
+    }
+
+    .vm__divider {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      flex-direction: column;
+
+      @include laptop {
+        flex-direction: column;
+        min-height: 120px;
+      }
+    }
+
+    .vm__line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, transparent, var(--sail-gold), transparent);
+      opacity: 0.4;
+
+      @include laptop {
+        width: 1px;
+        height: 48px;
+      }
+    }
+
+    .vm__node {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }

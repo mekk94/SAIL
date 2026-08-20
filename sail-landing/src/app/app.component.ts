@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject, ChangeDetectionStrategy } from '@angular/core';
 import { PageShellComponent } from './layout/page-shell/page-shell.component';
 import { HeroComponent } from './sections/hero/hero.component';
 import { OverviewComponent } from './sections/overview/overview.component';
@@ -14,6 +14,7 @@ import { ContactComponent } from './sections/contact/contact.component';
 import { ScrollService } from './core/services/scroll.service';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-root',
   standalone: true,
   imports: [
@@ -30,26 +31,8 @@ import { ScrollService } from './core/services/scroll.service';
     WhyChooseUsComponent,
     ContactComponent
   ],
-  template: `
-    <app-page-shell>
-      <app-hero />
-      <app-overview />
-      <app-vision-mission />
-      <app-freight-forwarding />
-      <app-transportation />
-      <app-bus-rental />
-      <app-customs />
-      <app-warehousing />
-      <app-industries />
-      <app-why-choose-us />
-      <app-contact />
-    </app-page-shell>
-  `,
-  styles: [`
-    :host {
-      display: block;
-    }
-  `]
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit, OnDestroy {
   private readonly scrollService = inject(ScrollService);

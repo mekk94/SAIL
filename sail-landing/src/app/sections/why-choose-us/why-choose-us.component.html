@@ -1,0 +1,33 @@
+<section id="why-choose-us" class="why section">
+      <div class="why__container">
+        <div class="why__header" appSectionReveal>
+          <app-section-label
+            [label]="i18n.t('whyChooseUs.label')"
+            [number]="i18n.t('whyChooseUs.number')"
+          />
+          <h2 class="why__title">{{ i18n.t('whyChooseUs.title') }}</h2>
+        </div>
+
+        <div class="why__timeline" appSectionReveal [revealDelay]="200" revealClass="sail-stagger">
+          @for (item of items(); track item.title; let i = $index) {
+            <div class="why__item" tabindex="0">
+              <div class="why__item-node" aria-hidden="true">
+                <span class="why__node-dot"></span>
+                @if (i < items().length - 1) {
+                  <span class="why__node-line"></span>
+                }
+              </div>
+              <div class="why__item-content">
+                <h3 class="why__item-title">{{ item.title }}</h3>
+                <p class="why__item-desc">{{ item.description }}</p>
+              </div>
+            </div>
+          }
+        </div>
+
+        <!-- Central identity -->
+        <div class="why__identity" aria-hidden="true" appSectionReveal [revealDelay]="600" revealClass="sail-reveal-scale">
+          <span class="why__identity-mark">SAIL</span>
+        </div>
+      </div>
+    </section>

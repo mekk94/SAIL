@@ -1,0 +1,33 @@
+<section id="transportation" class="transport section">
+      <div class="transport__container">
+        <div class="transport__image-wrap" appSectionReveal revealClass="sail-reveal-start">
+          <app-image-placeholder
+            label="IMAGE WILL BE HERE"
+            aspectRatio="16 / 10"
+            section="transportation"
+          />
+        </div>
+
+        <div class="transport__content" appSectionReveal [revealDelay]="200">
+          <div class="transport__panel">
+            <app-section-label
+              [label]="i18n.t('transportation.label')"
+              [number]="i18n.t('transportation.number')"
+            />
+
+            <h2 class="transport__title">{{ i18n.t('transportation.title') }}</h2>
+
+            <p class="transport__subtitle">{{ i18n.t('transportation.subtitle') }}</p>
+
+            <ul class="transport__list">
+              @for (service of services(); track service) {
+                <li class="transport__list-item">
+                  <span class="transport__list-marker" aria-hidden="true"></span>
+                  <span>{{ service }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>

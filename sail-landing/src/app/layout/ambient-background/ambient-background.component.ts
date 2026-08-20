@@ -1,4 +1,4 @@
-import { Component, ElementRef, viewChild, OnInit, OnDestroy, inject, PLATFORM_ID, NgZone } from '@angular/core';
+import { Component, ElementRef, viewChild, OnInit, OnDestroy, inject, PLATFORM_ID, NgZone, ChangeDetectionStrategy } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ScrollService } from '../../core/services/scroll.service';
 
@@ -31,19 +31,11 @@ interface Particle {
 }
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-ambient-background',
   standalone: true,
-  template: `<canvas #bgCanvas class="ambient-bg" aria-hidden="true"></canvas>`,
-  styles: [`
-    .ambient-bg {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: var(--z-background);
-      pointer-events: none;
-    }
-  `]
+  templateUrl: './ambient-background.component.html',
+  styleUrl: './ambient-background.component.scss',
 })
 export class AmbientBackgroundComponent implements OnInit, OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);

@@ -1,0 +1,42 @@
+<section id="bus-rental" class="bus section">
+      <div class="bus__container">
+        <div class="bus__header" appSectionReveal>
+          <app-section-label
+            [label]="i18n.t('busRental.label')"
+            [number]="i18n.t('busRental.number')"
+          />
+          <h2 class="bus__title">{{ i18n.t('busRental.title') }}</h2>
+          <p class="bus__subtitle">{{ i18n.t('busRental.subtitle') }}</p>
+        </div>
+
+        <div class="bus__layout">
+          <div class="bus__image" appSectionReveal [revealDelay]="150" revealClass="sail-reveal-start">
+            <app-image-placeholder
+              label="IMAGE WILL BE HERE"
+              aspectRatio="4 / 3"
+              section="bus-rental"
+            />
+          </div>
+
+          <div class="bus__fleet" appSectionReveal [revealDelay]="300" revealClass="sail-stagger">
+            @for (vehicle of fleet(); track vehicle.name; let i = $index) {
+              <button
+                class="bus__vehicle"
+                [class.bus__vehicle--active]="activeFleet() === i"
+                (click)="activeFleet.set(i)"
+                (mouseenter)="activeFleet.set(i)"
+              >
+                <div class="bus__vehicle-header">
+                  <h3 class="bus__vehicle-name">{{ vehicle.name }}</h3>
+                  <span class="bus__vehicle-capacity">{{ vehicle.capacity }}</span>
+                </div>
+                @if (activeFleet() === i) {
+                  <p class="bus__vehicle-desc">{{ vehicle.description }}</p>
+                }
+                <div class="bus__vehicle-line" aria-hidden="true"></div>
+              </button>
+            }
+          </div>
+        </div>
+      </div>
+    </section>

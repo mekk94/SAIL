@@ -1,0 +1,112 @@
+<header
+      class="header"
+      [class.header--scrolled]="scrollService.isScrolled()"
+      [class.header--rtl]="i18n.isArabic()"
+      role="banner"
+    >
+      <div class="header__inner">
+        <!-- Logo -->
+        <a href="#hero" class="header__logo" (click)="scrollToSection($event, 'hero')" aria-label="SAIL — Home">
+          <span class="logo-mark">S</span>
+          <span class="logo-text">
+            <span class="logo-name">SAIL</span>
+          </span>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="header__nav" [attr.aria-label]="i18n.t('nav.menu')">
+          @for (item of navItems; track item.id) {
+            <a
+              [href]="'#' + item.id"
+              class="header__link"
+              [class.header__link--active]="scrollService.activeSection() === item.id"
+              (click)="scrollToSection($event, item.id)"
+            >
+              {{ i18n.t(item.labelKey) }}
+              <span class="header__link-indicator" aria-hidden="true"></span>
+            </a>
+          }
+        </nav>
+
+        <!-- Actions -->
+        <div class="header__actions">
+          <button
+            class="header__lang"
+            (click)="i18n.toggleLang()"
+            [attr.aria-label]="'Switch to ' + (i18n.isArabic() ? 'English' : 'Arabic')"
+          >
+            {{ i18n.t('nav.language') }}
+          </button>
+
+          <a
+            href="#contact"
+            class="header__cta"
+            (click)="scrollToSection($event, 'contact')"
+          >
+            {{ i18n.t('nav.getQuote') }}
+          </a>
+
+          <!-- Mobile Menu Toggle -->
+          <button
+            class="header__burger"
+            (click)="toggleMobileMenu()"
+            [attr.aria-label]="mobileMenuOpen() ? i18n.t('nav.closeMenu') : i18n.t('nav.menu')"
+            [attr.aria-expanded]="mobileMenuOpen()"
+          >
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    @if (mobileMenuOpen()) {
+      <div class="mobile-overlay" (click)="closeMobileMenu()" role="presentation"></div>
+      <nav
+        class="mobile-menu"
+        [class.mobile-menu--rtl]="i18n.isArabic()"
+        role="navigation"
+        [attr.aria-label]="i18n.t('nav.menu')"
+      >
+        <div class="mobile-menu__header">
+          <span class="logo-mark">S</span>
+          <button
+            class="mobile-menu__close"
+            (click)="closeMobileMenu()"
+            [attr.aria-label]="i18n.t('nav.closeMenu')"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="mobile-menu__links">
+          @for (item of navItems; track item.id) {
+            <a
+              [href]="'#' + item.id"
+              class="mobile-menu__link"
+              [class.mobile-menu__link--active]="scrollService.activeSection() === item.id"
+              (click)="scrollToSection($event, item.id); closeMobileMenu()"
+            >
+              {{ i18n.t(item.labelKey) }}
+            </a>
+          }
+        </div>
+
+        <div class="mobile-menu__footer">
+          <button class="mobile-menu__lang" (click)="i18n.toggleLang()">
+            {{ i18n.t('nav.language') }}
+          </button>
+          <a
+            href="#contact"
+            class="mobile-menu__cta"
+            (click)="scrollToSection($event, 'contact'); closeMobileMenu()"
+          >
+            {{ i18n.t('nav.getQuote') }}
+          </a>
+        </div>
+      </nav>
+    }

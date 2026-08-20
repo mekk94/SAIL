@@ -1,0 +1,40 @@
+<section id="customs" class="customs section">
+      <div class="customs__container">
+        <div class="customs__content" appSectionReveal>
+          <div class="customs__panel">
+            <app-section-label
+              [label]="i18n.t('customs.label')"
+              [number]="i18n.t('customs.number')"
+            />
+
+            <h2 class="customs__title">{{ i18n.t('customs.title') }}</h2>
+            <p class="customs__subtitle">{{ i18n.t('customs.subtitle') }}</p>
+
+            <div class="customs__services">
+              @for (service of services(); track service.title; let i = $index) {
+                <div class="customs__service">
+                  <div class="customs__service-step" aria-hidden="true">
+                    <span class="customs__step-number">{{ i + 1 }}</span>
+                    @if (i < services().length - 1) {
+                      <span class="customs__step-line"></span>
+                    }
+                  </div>
+                  <div class="customs__service-body">
+                    <h3 class="customs__service-title">{{ service.title }}</h3>
+                    <p class="customs__service-desc">{{ service.description }}</p>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="customs__image" appSectionReveal [revealDelay]="200" revealClass="sail-reveal-end">
+          <app-image-placeholder
+            label="IMAGE WILL BE HERE"
+            aspectRatio="3 / 4"
+            section="customs"
+          />
+        </div>
+      </div>
+    </section>
