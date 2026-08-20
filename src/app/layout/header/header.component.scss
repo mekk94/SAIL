@@ -134,13 +134,23 @@
     }
 
     .header__lang {
-      padding: 6px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
       font-size: var(--text-sm);
       font-weight: var(--font-weight-semibold);
       color: var(--sail-ink-soft);
-      border-radius: var(--radius-sm);
-      transition: color var(--duration-fast) var(--ease-out),
-                  background var(--duration-fast) var(--ease-out);
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: var(--radius-full);
+      transition: all var(--duration-fast) var(--ease-out);
+      cursor: pointer;
+
+      .lang-icon {
+        width: 18px;
+        height: 18px;
+      }
 
       &:hover {
         color: var(--sail-ink);
@@ -288,13 +298,24 @@
       }
 
       &__lang {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
         padding: 12px;
-        text-align: center;
         font-weight: var(--font-weight-semibold);
         color: var(--sail-ink-soft);
+        background: transparent;
         border: 1px solid var(--sail-border);
         border-radius: var(--radius-md);
         transition: all var(--duration-fast);
+        cursor: pointer;
+        width: 100%;
+
+        .lang-icon {
+          width: 20px;
+          height: 20px;
+        }
 
         &:hover {
           border-color: var(--sail-gold);

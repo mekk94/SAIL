@@ -34,8 +34,14 @@
             class="header__lang"
             (click)="i18n.toggleLang()"
             [attr.aria-label]="'Switch to ' + (i18n.isArabic() ? 'English' : 'Arabic')"
+            [title]="'Switch to ' + (i18n.isArabic() ? 'English' : 'Arabic')"
           >
-            {{ i18n.t('nav.language') }}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lang-icon">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span class="lang-text">{{ i18n.isArabic() ? 'AR' : 'EN' }}</span>
           </button>
 
           <a
@@ -98,7 +104,12 @@
 
         <div class="mobile-menu__footer">
           <button class="mobile-menu__lang" (click)="i18n.toggleLang()">
-            {{ i18n.t('nav.language') }}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lang-icon">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span>{{ i18n.isArabic() ? 'Switch to English' : 'التبديل إلى العربية' }}</span>
           </button>
           <a
             href="#contact"
