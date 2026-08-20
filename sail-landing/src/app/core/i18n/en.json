@@ -1,0 +1,255 @@
+{
+  "meta": {
+    "title": "SAIL — Smart Automated Integrated Logistics | Freight Forwarding & Transportation",
+    "description": "SAIL provides end-to-end logistics solutions including freight forwarding, transportation, customs clearance, and warehousing in Saudi Arabia and globally."
+  },
+  "nav": {
+    "overview": "Overview",
+    "services": "Services",
+    "transportation": "Transportation",
+    "busRental": "Bus Rental",
+    "customs": "Customs",
+    "warehousing": "Warehousing",
+    "industries": "Industries",
+    "contact": "Contact",
+    "getQuote": "Get a Quote",
+    "language": "AR",
+    "menu": "Menu",
+    "closeMenu": "Close menu"
+  },
+  "hero": {
+    "headline": "Moving Cargo,\nDriving Growth.",
+    "subheadline": "End-to-end logistics solutions for domestic and international cargo — freight forwarding, transportation, and beyond.",
+    "ctaPrimary": "Get a Quote",
+    "ctaSecondary": "Explore Services"
+  },
+  "overview": {
+    "label": "Who We Are",
+    "number": "01",
+    "title": "Professional Freight Forwarding & Transportation",
+    "body": "SAIL is a professional freight forwarding and transportation company providing end-to-end logistics solutions for domestic and international cargo movement. We are committed to efficiency, transparency, and timely delivery.",
+    "tagline": "Smart Automated Integrated Logistics"
+  },
+  "visionMission": {
+    "visionLabel": "Our Vision",
+    "vision": "To become a trusted logistics partner recognized for service excellence.",
+    "missionLabel": "Our Mission",
+    "mission": "To deliver safe, cost-effective, and timely logistics solutions."
+  },
+  "freightForwarding": {
+    "label": "Freight Forwarding",
+    "number": "02",
+    "title": "Global Freight Forwarding Services",
+    "subtitle": "Seamless cargo movement across borders — by sea, air, and multimodal networks.",
+    "services": [
+      {
+        "title": "Sea Freight",
+        "description": "Full Container Load (FCL) & Less than Container Load (LCL) shipments across global trade lanes.",
+        "tag": "FCL & LCL"
+      },
+      {
+        "title": "Air Freight",
+        "description": "Time-sensitive import and export air cargo solutions with reliable transit times.",
+        "tag": "Import & Export"
+      },
+      {
+        "title": "Multimodal Transport",
+        "description": "Integrated transport solutions combining sea, air, and land for optimal efficiency.",
+        "tag": "Integrated"
+      },
+      {
+        "title": "Door-to-Door Solutions",
+        "description": "Complete pickup to delivery logistics — from origin to final destination.",
+        "tag": "End-to-End"
+      }
+    ]
+  },
+  "transportation": {
+    "label": "Transportation",
+    "number": "03",
+    "title": "Land Transportation Services",
+    "subtitle": "Reliable container and cargo transportation across Saudi Arabia and the region.",
+    "services": [
+      "Container Transportation",
+      "Local & Cross-Border Transport",
+      "FTL & LTL Services",
+      "Project & Heavy Cargo"
+    ]
+  },
+  "busRental": {
+    "label": "Bus Rental",
+    "number": "04",
+    "title": "Bus Rental Services",
+    "subtitle": "We provide buses on rent anywhere in Saudi Arabia — for corporate transport, employee shuttles, events, tourism, Hajj/Umrah groups, and airport transfers.",
+    "fleet": [
+      {
+        "name": "Luxury VIP Coaches",
+        "capacity": "Premium",
+        "description": "Executive-class coaches for VIP transportation and corporate events."
+      },
+      {
+        "name": "Coach",
+        "capacity": "45–50 seats",
+        "description": "Full-size coaches for large group transportation."
+      },
+      {
+        "name": "Mini Bus",
+        "capacity": "33–35 seats",
+        "description": "Mid-size buses for medium groups and shuttle services."
+      },
+      {
+        "name": "Toyota Coaster",
+        "capacity": "20–30 seats",
+        "description": "Versatile coasters for tours, events, and daily transport."
+      },
+      {
+        "name": "Passenger Vans",
+        "capacity": "7–15 passengers",
+        "description": "Compact vans for small groups and airport transfers."
+      }
+    ]
+  },
+  "customs": {
+    "label": "Customs Clearance",
+    "number": "05",
+    "title": "Customs Clearance Services",
+    "subtitle": "Streamlined documentation and compliance for smooth import and export operations.",
+    "services": [
+      {
+        "title": "HS Code & Duty Consultation",
+        "description": "Expert guidance on harmonized system codes and duty calculations."
+      },
+      {
+        "title": "Documentation & Compliance",
+        "description": "Complete documentation management ensuring regulatory compliance."
+      },
+      {
+        "title": "Import & Export Clearance",
+        "description": "Efficient customs clearance for inbound and outbound shipments."
+      }
+    ]
+  },
+  "warehousing": {
+    "label": "Warehousing",
+    "number": "06",
+    "title": "Warehousing & Value-Added Services",
+    "subtitle": "Comprehensive storage, distribution, and cargo management solutions.",
+    "services": [
+      {
+        "title": "Warehousing & Storage",
+        "description": "Secure warehousing facilities for short-term and long-term storage needs."
+      },
+      {
+        "title": "Distribution & Last-Mile Delivery",
+        "description": "Efficient distribution networks ensuring timely last-mile delivery."
+      },
+      {
+        "title": "Cargo Insurance",
+        "description": "Comprehensive cargo insurance to protect your shipments in transit."
+      },
+      {
+        "title": "Packing & Palletization",
+        "description": "Professional packing and palletization for safe cargo handling."
+      }
+    ]
+  },
+  "industries": {
+    "label": "Industries",
+    "number": "07",
+    "title": "Industries We Serve",
+    "subtitle": "Tailored logistics solutions for diverse industry requirements.",
+    "items": [
+      {
+        "name": "FMCG & Retail",
+        "description": "Fast-moving consumer goods logistics with temperature control and rapid distribution."
+      },
+      {
+        "name": "Construction & Infrastructure",
+        "description": "Heavy equipment, building materials, and project cargo logistics."
+      },
+      {
+        "name": "Oil & Gas",
+        "description": "Specialized transport for energy sector equipment and materials."
+      },
+      {
+        "name": "Manufacturing & Industrial",
+        "description": "Supply chain solutions for manufacturing raw materials and finished goods."
+      },
+      {
+        "name": "Automotive & Pharmaceuticals",
+        "description": "Compliant handling for automotive parts and pharmaceutical products."
+      }
+    ]
+  },
+  "whyChooseUs": {
+    "label": "Why SAIL",
+    "number": "08",
+    "title": "Why Choose Us",
+    "items": [
+      {
+        "title": "Competitive Pricing",
+        "description": "Cost-effective logistics solutions without compromising on quality or reliability."
+      },
+      {
+        "title": "Strong Global Network",
+        "description": "Established partnerships and routes spanning key international trade corridors."
+      },
+      {
+        "title": "Experienced Logistics Team",
+        "description": "Industry professionals with deep expertise across all logistics verticals."
+      },
+      {
+        "title": "Customer-Focused Service",
+        "description": "Dedicated support and transparent communication at every stage."
+      },
+      {
+        "title": "On-Time Delivery",
+        "description": "Commitment to meeting delivery schedules with precision and accountability."
+      }
+    ]
+  },
+  "contact": {
+    "label": "Get in Touch",
+    "number": "09",
+    "title": "Let's Move Your Cargo",
+    "subtitle": "Ready to streamline your logistics? Reach out and let's discuss how SAIL can support your supply chain.",
+    "phone": "+966 53 202 3587",
+    "email": "BDM@sail-freight.com",
+    "website": "sail-freight.com",
+    "location": "Dammam, Saudi Arabia",
+    "form": {
+      "name": "Full Name",
+      "company": "Company",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "service": "Service Required",
+      "serviceOptions": [
+        "Sea Freight",
+        "Air Freight",
+        "Land Transportation",
+        "Bus Rental",
+        "Customs Clearance",
+        "Warehousing",
+        "Other"
+      ],
+      "message": "Message",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully! We'll get back to you shortly.",
+      "error": "Something went wrong. Please try again or contact us directly.",
+      "required": "This field is required",
+      "invalidEmail": "Please enter a valid email address",
+      "invalidPhone": "Please enter a valid phone number",
+      "selectService": "Select a service"
+    }
+  },
+  "footer": {
+    "tagline": "Smart Automated Integrated Logistics",
+    "copyright": "© 2026 SAIL. All rights reserved.",
+    "links": {
+      "overview": "Overview",
+      "services": "Services",
+      "contact": "Contact"
+    }
+  }
+}

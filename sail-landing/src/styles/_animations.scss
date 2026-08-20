@@ -1,0 +1,220 @@
+// ============================================================
+// SAIL Animation Keyframes
+// ============================================================
+
+@use 'mixins' as *;
+
+// --- Fade In ---
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+// --- Fade In Up ---
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// --- Fade In Down ---
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// --- Fade In Scale ---
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// --- Slide In from Inline Start ---
+@keyframes slideInStart {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// --- Slide In from Inline End ---
+@keyframes slideInEnd {
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// --- Line Grow ---
+@keyframes lineGrow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+// --- Gold Pulse ---
+@keyframes goldPulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+// --- Reveal Clip (top to bottom) ---
+@keyframes clipReveal {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+// --- Route Dash ---
+@keyframes routeDash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+// --- Subtle float ---
+@keyframes subtleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+// --- Spin slow ---
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+// --- Reveal utility classes ---
+.sail-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--duration-reveal) var(--ease-out),
+              transform var(--duration-reveal) var(--ease-out);
+
+  &.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sail-reveal-scale {
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity var(--duration-reveal) var(--ease-out),
+              transform var(--duration-reveal) var(--ease-out);
+
+  &.revealed {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.sail-reveal-start {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity var(--duration-reveal) var(--ease-out),
+              transform var(--duration-reveal) var(--ease-out);
+
+  &.revealed {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.sail-reveal-end {
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity var(--duration-reveal) var(--ease-out),
+              transform var(--duration-reveal) var(--ease-out);
+
+  &.revealed {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// --- Stagger children ---
+.sail-stagger {
+  > * {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity var(--duration-reveal) var(--ease-out),
+                transform var(--duration-reveal) var(--ease-out);
+  }
+
+  &.revealed > * {
+    opacity: 1;
+    transform: translateY(0);
+
+    @for $i from 1 through 12 {
+      &:nth-child(#{$i}) {
+        transition-delay: #{$i * 80}ms;
+      }
+    }
+  }
+}
+
+// --- Reduced Motion ---
+@include reduced-motion {
+  .sail-reveal,
+  .sail-reveal-scale,
+  .sail-reveal-start,
+  .sail-reveal-end {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .sail-stagger > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
