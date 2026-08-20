@@ -53,7 +53,7 @@
 
     .footer__tagline {
       font-size: var(--text-sm);
-      color: var(--sail-ink-soft);
+      color: var(--sail-white);
       opacity: 0.8;
     }
 
@@ -64,9 +64,9 @@
 
       a {
         font-size: var(--text-sm);
-        color: var(--sail-ink-soft);
+        color: var(--sail-white);
         text-decoration: none;
-        transition: color var(--duration-fast) var(--ease-out);
+        transition: color var(--duration-fast) var(--ease-out), opacity var(--duration-fast) var(--ease-out);
         opacity: 0.8;
 
         &:hover {
@@ -84,6 +84,6 @@
 
     .footer__copyright {
       font-size: var(--text-xs);
-      color: var(--sail-ink-soft);
-      opacity: 0.5;
+      color: var(--sail-white);
+      opacity: 0.6;
     }
