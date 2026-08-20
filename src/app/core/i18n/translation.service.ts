@@ -20,9 +20,17 @@ export class TranslationService {
   readonly isArabic = computed(() => this.lang() === 'ar');
 
   constructor() {
+    if (isPlatformBrowser(this.platformId)) {
+      const savedLang = localStorage.getItem('sail_lang') as Lang;
+      if (savedLang === 'en' || savedLang === 'ar') {
+        this.lang.set(savedLang);
+      }
+    }
+
     effect(() => {
       const currentLang = this.lang();
       if (isPlatformBrowser(this.platformId)) {
+        localStorage.setItem('sail_lang', currentLang);
         const html = this.document.documentElement;
         html.setAttribute('lang', currentLang);
         html.setAttribute('dir', this.dir());
