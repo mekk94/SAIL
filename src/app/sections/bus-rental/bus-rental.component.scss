@@ -74,8 +74,32 @@
     .bus__vehicle-header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: var(--space-md);
+      position: relative;
+      z-index: 1;
+    }
+
+    .bus__vehicle-icon {
+      color: var(--sail-gold);
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      opacity: 0.7;
+      transition: opacity var(--duration-fast) var(--ease-out),
+                  transform var(--duration-fast) var(--ease-out);
+    }
+
+    .bus__vehicle:hover .bus__vehicle-icon,
+    .bus__vehicle--active .bus__vehicle-icon {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    .bus__vehicle-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
     }
 
     .bus__vehicle-name {

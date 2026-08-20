@@ -27,8 +27,13 @@
                 (mouseenter)="activeFleet.set(i)"
               >
                 <div class="bus__vehicle-header">
-                  <h3 class="bus__vehicle-name">{{ vehicle.name }}</h3>
-                  <span class="bus__vehicle-capacity">{{ vehicle.capacity }}</span>
+                  <div class="bus__vehicle-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19a2 2 0 1 0 4 0 2 2 0 1 0-4 0z"/><path d="M16 19a2 2 0 1 0 4 0 2 2 0 1 0-4 0z"/><path d="M4 17h16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10z"/><path d="M4 12h16"/><path d="M8 5v7"/><path d="M16 5v7"/></svg>
+                  </div>
+                  <div class="bus__vehicle-info">
+                    <h3 class="bus__vehicle-name">{{ vehicle.name }}</h3>
+                    <span class="bus__vehicle-capacity">{{ vehicle.capacity }}</span>
+                  </div>
                 </div>
                 @if (activeFleet() === i) {
                   <p class="bus__vehicle-desc">{{ vehicle.description }}</p>

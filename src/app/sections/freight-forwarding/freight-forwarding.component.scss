@@ -59,14 +59,14 @@
       }
     }
 
-    .ff__item-index {
-      font-size: var(--text-3xl);
-      font-weight: var(--font-weight-bold);
+    .ff__item-icon {
       color: var(--sail-gold);
-      opacity: 0.12;
-      line-height: 1;
       flex-shrink: 0;
-      min-width: 44px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: flex-start;
+      margin-top: -2px;
     }
 
     .ff__item-content {
