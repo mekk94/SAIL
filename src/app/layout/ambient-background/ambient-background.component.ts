@@ -194,7 +194,7 @@ export class AmbientBackgroundComponent implements OnInit, OnDestroy {
     ctx.strokeStyle = 'rgba(196, 137, 47, 0.04)';
     ctx.lineWidth = 1;
     ctx.stroke();
-    
+
     ctx.rotate(Math.PI / 2 + this.time * 0.1);
     ctx.beginPath();
     ctx.arc(0, 0, this.width * 0.19, 0, Math.PI * 1.5);
