@@ -1,4 +1,5 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy, viewChild, ElementRef, effect, OnDestroy, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { TranslationService } from '../../core/i18n/translation.service';
 import { SectionLabelComponent } from '../../shared/components/section-label/section-label.component';
 import { SectionRevealDirective } from '../../shared/directives/section-reveal.directive';
@@ -11,8 +12,40 @@ import { SectionRevealDirective } from '../../shared/directives/section-reveal.d
   templateUrl: './why-choose-us.component.html',
   styleUrl: './why-choose-us.component.scss',
 })
-export class WhyChooseUsComponent {
+export class WhyChooseUsComponent implements OnDestroy {
   readonly i18n = inject(TranslationService);
+  private readonly platformId = inject(PLATFORM_ID);
 
   readonly items = () => this.i18n.tArray('whyChooseUs.items') as any[];
+  
+  readonly sectionRef = viewChild<ElementRef>('sectionRef');
+  private observer: IntersectionObserver | null = null;
+
+  constructor() {
+    effect(() => {
+      const ref = this.sectionRef();
+      if (isPlatformBrowser(this.platformId) && ref) {
+        this.observer?.disconnect();
+        
+        this.observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-active');
+            } else {
+              entry.target.classList.remove('is-active');
+            }
+          });
+        }, {
+          rootMargin: '-45% 0px -45% 0px',
+          threshold: 0
+        });
+
+        this.observer.observe(ref.nativeElement);
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this.observer?.disconnect();
+  }
 }

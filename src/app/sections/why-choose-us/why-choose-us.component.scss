@@ -2,6 +2,28 @@
 
     .why {
       position: relative;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: var(--sail-gold-subtle);
+        opacity: 0;
+        transition: opacity var(--duration-base) var(--ease-out);
+        z-index: -1;
+      }
+
+      @media (hover: hover) {
+        &:hover::before {
+          opacity: 1;
+        }
+      }
+
+      &.is-active::before {
+        @media (hover: none) {
+          opacity: 1;
+        }
+      }
     }
 
     .why__container {
@@ -101,6 +123,7 @@
       right: var(--container-padding);
       top: 50%;
       transform: translateY(-50%);
+      pointer-events: none;
 
       @include laptop {
         display: block;
