@@ -60,8 +60,6 @@ export class AmbientBackgroundComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
 
-    this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     this.ngZone.runOutsideAngular(() => {
       requestAnimationFrame(() => this.setup());
     });
@@ -70,6 +68,9 @@ export class AmbientBackgroundComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     cancelAnimationFrame(this.animationId);
     window.removeEventListener('mousemove', this.onMouseMove);
+    window.removeEventListener('touchmove', this.onTouchMove);
+    window.removeEventListener('touchstart', this.onTouchMove);
+    window.removeEventListener('touchend', this.onTouchEnd);
     this.resizeObserver?.disconnect();
   }
 
@@ -86,14 +87,12 @@ export class AmbientBackgroundComponent implements OnInit, OnDestroy {
     this.resizeObserver.observe(document.body);
 
     window.addEventListener('mousemove', this.onMouseMove, { passive: true });
+    window.addEventListener('touchmove', this.onTouchMove, { passive: true });
+    window.addEventListener('touchstart', this.onTouchMove, { passive: true });
+    window.addEventListener('touchend', this.onTouchEnd, { passive: true });
 
     this.generateNetwork();
-
-    if (!this.prefersReducedMotion) {
-      this.animate();
-    } else {
-      this.drawStatic();
-    }
+    this.animate();
   }
 
   private resize(canvas: HTMLCanvasElement): void {
@@ -109,7 +108,8 @@ export class AmbientBackgroundComponent implements OnInit, OnDestroy {
   }
 
   private generateNetwork(): void {
-    const nodeCount = Math.min(Math.floor((this.width * this.height) / 40000), 30);
+    // Ensure at least 15 nodes on mobile, cap at 40
+    const nodeCount = Math.max(15, Math.min(Math.floor((this.width * this.height) / 30000), 40));
     this.nodes = [];
     this.routes = [];
     this.particles = [];
@@ -130,13 +130,15 @@ export class AmbientBackgroundComponent implements OnInit, OnDestroy {
       });
     }
 
+    const maxDim = Math.max(this.width, this.height);
+
     // Create route connections (connect nearby nodes)
     for (let i = 0; i < this.nodes.length; i++) {
       for (let j = i + 1; j < this.nodes.length; j++) {
         const dx = this.nodes[i].baseX - this.nodes[j].baseX;
         const dy = this.nodes[i].baseY - this.nodes[j].baseY;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < this.width * 0.4 && Math.random() < 0.35) {
+        if (dist < maxDim * 0.25 && Math.random() < 0.35) {
           this.routes.push({
             from: i,
             to: j,
@@ -166,6 +168,18 @@ export class AmbientBackgroundComponent implements OnInit, OnDestroy {
     this.mouseY = e.clientY;
   };
 
+  private onTouchMove = (e: TouchEvent): void => {
+    if (e.touches.length > 0) {
+      this.mouseX = e.touches[0].clientX;
+      this.mouseY = e.touches[0].clientY;
+    }
+  };
+
+  private onTouchEnd = (): void => {
+    this.mouseX = -1;
+    this.mouseY = -1;
+  };
+
   private animate = (): void => {
     this.time += 0.016;
     this.draw();
@@ -179,25 +193,27 @@ export class AmbientBackgroundComponent implements OnInit, OnDestroy {
     ctx.clearRect(0, 0, this.width, this.height);
 
     // Draw ambient rotating arcs (radar/compass theme)
+    const maxDim = Math.max(this.width, this.height);
+
     ctx.save();
     ctx.translate(this.width * 0.85, this.height * 0.3);
     ctx.rotate(this.time * 0.05);
     ctx.beginPath();
-    ctx.arc(0, 0, this.width * 0.25, 0, Math.PI * 1.2);
+    ctx.arc(0, 0, maxDim * 0.25, 0, Math.PI * 1.2);
     ctx.strokeStyle = 'rgba(196, 137, 47, 0.08)';
     ctx.lineWidth = 1.5;
     ctx.stroke();
 
     ctx.rotate(Math.PI / 4 + this.time * -0.08);
     ctx.beginPath();
-    ctx.arc(0, 0, this.width * 0.22, 0, Math.PI * 0.8);
+    ctx.arc(0, 0, maxDim * 0.22, 0, Math.PI * 0.8);
     ctx.strokeStyle = 'rgba(196, 137, 47, 0.1)';
     ctx.lineWidth = 1;
     ctx.stroke();
 
     ctx.rotate(Math.PI / 2 + this.time * 0.1);
     ctx.beginPath();
-    ctx.arc(0, 0, this.width * 0.19, 0, Math.PI * 1.5);
+    ctx.arc(0, 0, maxDim * 0.19, 0, Math.PI * 1.5);
     ctx.strokeStyle = 'rgba(196, 137, 47, 0.12)';
     ctx.lineWidth = 0.5;
     ctx.stroke();
@@ -207,7 +223,7 @@ export class AmbientBackgroundComponent implements OnInit, OnDestroy {
     ctx.translate(this.width * 0.1, this.height * 0.8);
     ctx.rotate(this.time * -0.04);
     ctx.beginPath();
-    ctx.arc(0, 0, this.width * 0.3, 0, Math.PI * 0.7);
+    ctx.arc(0, 0, maxDim * 0.3, 0, Math.PI * 0.7);
     ctx.strokeStyle = 'rgba(196, 137, 47, 0.06)';
     ctx.lineWidth = 2;
     ctx.stroke();
@@ -318,10 +334,5 @@ export class AmbientBackgroundComponent implements OnInit, OnDestroy {
       ctx.fillStyle = `rgba(196, 137, 47, ${0.3 + Math.sin(t * Math.PI) * 0.4})`;
       ctx.fill();
     }
-  }
-
-  private drawStatic(): void {
-    // Reduced motion: draw a single static frame
-    this.draw();
   }
 }
