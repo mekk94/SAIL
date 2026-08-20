@@ -117,7 +117,7 @@ export class AmbientBackgroundComponent implements OnInit, OnDestroy {
     // Create nodes distributed across the canvas
     for (let i = 0; i < nodeCount; i++) {
       const x = Math.random() * this.width;
-      const y = Math.random() * (this.height * 3); // extend beyond viewport for scroll
+      const y = Math.random() * this.height; // just the viewport
       this.nodes.push({
         x, y,
         baseX: x,
@@ -168,18 +168,50 @@ export class AmbientBackgroundComponent implements OnInit, OnDestroy {
 
   private animate = (): void => {
     this.time += 0.016;
-    const scrollProgress = this.scrollService.scrollProgress();
-    this.draw(scrollProgress);
+    this.draw();
     this.animationId = requestAnimationFrame(this.animate);
   };
 
-  private draw(scrollProgress: number): void {
+  private draw(): void {
     if (!this.ctx) return;
     const ctx = this.ctx;
 
     ctx.clearRect(0, 0, this.width, this.height);
 
-    const scrollOffset = scrollProgress * this.height * 0.5;
+    // Draw ambient rotating arcs (radar/compass theme)
+    ctx.save();
+    ctx.translate(this.width * 0.85, this.height * 0.3);
+    ctx.rotate(this.time * 0.05);
+    ctx.beginPath();
+    ctx.arc(0, 0, this.width * 0.25, 0, Math.PI * 1.2);
+    ctx.strokeStyle = 'rgba(196, 137, 47, 0.03)';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    ctx.rotate(Math.PI / 4 + this.time * -0.08);
+    ctx.beginPath();
+    ctx.arc(0, 0, this.width * 0.22, 0, Math.PI * 0.8);
+    ctx.strokeStyle = 'rgba(196, 137, 47, 0.04)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    
+    ctx.rotate(Math.PI / 2 + this.time * 0.1);
+    ctx.beginPath();
+    ctx.arc(0, 0, this.width * 0.19, 0, Math.PI * 1.5);
+    ctx.strokeStyle = 'rgba(196, 137, 47, 0.05)';
+    ctx.lineWidth = 0.5;
+    ctx.stroke();
+    ctx.restore();
+
+    ctx.save();
+    ctx.translate(this.width * 0.1, this.height * 0.8);
+    ctx.rotate(this.time * -0.04);
+    ctx.beginPath();
+    ctx.arc(0, 0, this.width * 0.3, 0, Math.PI * 0.7);
+    ctx.strokeStyle = 'rgba(196, 137, 47, 0.02)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.restore();
 
     // Draw grid
     ctx.strokeStyle = 'rgba(196, 137, 47, 0.025)';
@@ -191,7 +223,7 @@ export class AmbientBackgroundComponent implements OnInit, OnDestroy {
       ctx.lineTo(x, this.height);
       ctx.stroke();
     }
-    for (let y = -scrollOffset % gridSize; y < this.height; y += gridSize) {
+    for (let y = 0; y < this.height; y += gridSize) {
       ctx.beginPath();
       ctx.moveTo(0, y);
       ctx.lineTo(this.width, y);
@@ -203,23 +235,16 @@ export class AmbientBackgroundComponent implements OnInit, OnDestroy {
       const from = this.nodes[route.from];
       const to = this.nodes[route.to];
 
-      const fromY = from.y - scrollOffset;
-      const toY = to.y - scrollOffset;
-
-      // Only draw visible routes
-      if (fromY > this.height + 100 && toY > this.height + 100) continue;
-      if (fromY < -100 && toY < -100) continue;
-
       ctx.beginPath();
       ctx.strokeStyle = 'rgba(196, 137, 47, 0.06)';
       ctx.lineWidth = 0.5;
 
       // Curved route
       const midX = (from.x + to.x) / 2 + Math.sin(this.time * 0.3) * 10;
-      const midY = (fromY + toY) / 2;
+      const midY = (from.y + to.y) / 2;
 
-      ctx.moveTo(from.x, fromY);
-      ctx.quadraticCurveTo(midX, midY, to.x, toY);
+      ctx.moveTo(from.x, from.y);
+      ctx.quadraticCurveTo(midX, midY, to.x, to.y);
       ctx.stroke();
     }
 
@@ -227,9 +252,7 @@ export class AmbientBackgroundComponent implements OnInit, OnDestroy {
     for (const node of this.nodes) {
       // Subtle drift
       node.x = node.baseX + Math.sin(this.time * 0.5 + node.pulsePhase) * 3;
-      const nodeY = node.y - scrollOffset + Math.cos(this.time * 0.3 + node.pulsePhase) * 2;
-
-      if (nodeY < -50 || nodeY > this.height + 50) continue;
+      const nodeY = node.y + Math.cos(this.time * 0.3 + node.pulsePhase) * 2;
 
       // Mouse interaction
       let mouseInfluence = 0;
@@ -279,17 +302,14 @@ export class AmbientBackgroundComponent implements OnInit, OnDestroy {
       const from = this.nodes[route.from];
       const to = this.nodes[route.to];
 
-      const fromY = from.y - scrollOffset;
-      const toY = to.y - scrollOffset;
-
       // Quadratic bezier interpolation
       const midX = (from.x + to.x) / 2;
-      const midY = (fromY + toY) / 2;
+      const midY = (from.y + to.y) / 2;
       const t = particle.t;
       const u = 1 - t;
 
       particle.x = u * u * from.x + 2 * u * t * midX + t * t * to.x;
-      particle.y = u * u * fromY + 2 * u * t * midY + t * t * toY;
+      particle.y = u * u * from.y + 2 * u * t * midY + t * t * to.y;
 
       if (particle.y < -50 || particle.y > this.height + 50) continue;
 
@@ -302,6 +322,6 @@ export class AmbientBackgroundComponent implements OnInit, OnDestroy {
 
   private drawStatic(): void {
     // Reduced motion: draw a single static frame
-    this.draw(0);
+    this.draw();
   }
 }
