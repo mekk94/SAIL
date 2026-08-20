@@ -23,8 +23,55 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       gap: var(--space-md);
-      max-width: 500px;
+      max-width: 100%;
+      padding: var(--space-2xl);
+      border-radius: var(--radius-lg);
+      position: relative;
+      overflow: hidden;
+      min-height: 500px;
+      color: white; /* Make text white since it's on an image */
+    }
+
+    .vm__vision {
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url('/assets/images/our_vision.webp');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: -2;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.65); /* Dark overlay */
+        z-index: -1;
+      }
+    }
+
+    .vm__mission {
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url('/assets/images/our_mission.webp');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: -2;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.65); /* Dark overlay */
+        z-index: -1;
+      }
     }
 
     .vm__label {
@@ -33,14 +80,16 @@
       text-transform: uppercase;
       letter-spacing: 0.14em;
       color: var(--sail-gold);
+      z-index: 1;
     }
 
     .vm__statement {
-      font-size: var(--text-2xl);
+      font-size: clamp(2rem, 5vw, 3rem);
       font-weight: var(--font-weight-semibold);
       line-height: 1.35;
-      color: var(--sail-ink);
+      color: white; /* Override ink color */
       text-wrap: balance;
+      z-index: 1;
     }
 
     .vm__divider {

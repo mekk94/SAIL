@@ -36,7 +36,36 @@
 
     .wh__image {
       border-radius: var(--radius-lg);
+    }
+
+    .image-modern-wrapper {
+      position: relative;
+      border-radius: var(--radius-lg);
       overflow: hidden;
+      box-shadow: var(--shadow-xl);
+      background: var(--sail-white);
+      
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border: 1px solid rgba(196, 137, 47, 0.2);
+        border-radius: inherit;
+        pointer-events: none;
+      }
+    }
+
+    .image-modern {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 700px;
+      object-fit: cover;
+      transition: transform var(--duration-slow) ease-out;
+      
+      &:hover {
+        transform: scale(1.02);
+      }
     }
 
     .wh__services {

@@ -1,4 +1,4 @@
-import { Component, inject, ChangeDetectionStrategy, viewChild, ElementRef, effect, OnDestroy, PLATFORM_ID } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy, viewChild, ElementRef, effect, OnDestroy, PLATFORM_ID, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { TranslationService } from '../../core/i18n/translation.service';
 import { SectionLabelComponent } from '../../shared/components/section-label/section-label.component';
@@ -17,6 +17,15 @@ export class WhyChooseUsComponent implements OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
 
   readonly items = () => this.i18n.tArray('whyChooseUs.items') as any[];
+  readonly activeIndex = signal(0);
+  
+  readonly itemImages = [
+    '/assets/images/why%20choose%20us/competitive_pricing.webp',
+    '/assets/images/why%20choose%20us/strong_global_network.webp',
+    '/assets/images/why%20choose%20us/experienced_logistics_team.webp',
+    '/assets/images/why%20choose%20us/customer_focused_service.webp',
+    '/assets/images/why%20choose%20us/on_time_delivery.webp'
+  ];
   
   readonly sectionRef = viewChild<ElementRef>('sectionRef');
   private observer: IntersectionObserver | null = null;

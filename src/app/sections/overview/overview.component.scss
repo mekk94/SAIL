@@ -12,7 +12,7 @@
       align-items: center;
 
       @include laptop {
-        grid-template-columns: 1.3fr 0.7fr;
+        grid-template-columns: 1.2fr 0.8fr;
       }
     }
 
@@ -49,17 +49,39 @@
     }
 
     .overview__decoration {
-      display: none;
+      width: 100%;
+      max-width: 500px;
       justify-self: center;
-      width: 120px;
-      opacity: 0.6;
+      margin-top: var(--space-xl);
+      opacity: 1;
 
       @include laptop {
         display: block;
+        margin-top: 0;
+        max-width: 100%;
       }
     }
 
-    .overview__svg {
+    .overview__image-slider {
       width: 100%;
-      height: auto;
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      aspect-ratio: auto;
+      min-height: 400px;
+    }
+
+    .overview__slider-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      
+      &.active {
+        opacity: 1;
+      }
     }

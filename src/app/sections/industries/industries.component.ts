@@ -23,4 +23,12 @@ export class IndustriesComponent {
     const index = this.activeIndustry();
     return items[index] || null;
   };
+
+  readonly itemImages = [
+    '/assets/images/Industries/fmcg_retail.webp',
+    '/assets/images/Industries/construction_infrastructure.webp',
+    '/assets/images/Industries/oil_gas.webp',
+    '/assets/images/Industries/manufacturing_industrial.webp',
+    '/assets/images/Industries/automotive_pharmaceuticals.webp'
+  ];
 }

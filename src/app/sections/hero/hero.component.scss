@@ -8,6 +8,18 @@
       padding-block-start: calc(var(--header-height) + var(--space-xl));
       padding-block-end: var(--space-2xl);
       overflow: hidden; /* Important for the large watermark */
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url('/assets/images/hero/hero-mobile.webp');
+        background-size: 100% 100%;
+        background-position: center;
+        opacity: 0.15;
+        z-index: 0;
+        pointer-events: none;
+      }
     }
 
 

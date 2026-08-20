@@ -2,6 +2,7 @@
 
     .why {
       position: relative;
+      overflow: hidden;
       
       &::before {
         content: '';
@@ -15,15 +16,26 @@
 
       @media (hover: hover) {
         &:hover::before {
-          opacity: 1;
+          opacity: 0.8;
         }
       }
 
       &.is-active::before {
         @media (hover: none) {
-          opacity: 1;
+          opacity: 0.8;
         }
       }
+    }
+
+    .why__background {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.15;
+      transition: background-image 0.5s ease-in-out;
+      z-index: -2;
     }
 
     .why__container {

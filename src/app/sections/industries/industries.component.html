@@ -27,12 +27,8 @@
 
           <!-- Dynamic Image Area -->
           <div class="ind__visual" appSectionReveal [revealDelay]="300" revealClass="sail-reveal-end">
-            <div class="ind__image-wrap">
-              <app-image-placeholder
-                label="IMAGE WILL BE HERE"
-                aspectRatio="16 / 10"
-                section="industries"
-              />
+            <div class="ind__image-wrap shadow-modern">
+              <img [src]="itemImages[activeIndustry()]" alt="Industry Image" class="section-image" style="width: 100%; height: auto; display: block; border-radius: var(--radius-lg);">
             </div>
 
             @if (activeIndustryData(); as data) {
