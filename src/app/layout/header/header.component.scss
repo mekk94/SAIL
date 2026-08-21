@@ -55,6 +55,12 @@
       gap: 10px;
       text-decoration: none;
       z-index: 1;
+
+      .logo-image {
+        height: 40px;
+        width: auto;
+        object-fit: contain;
+      }
     }
 
     .logo-mark {
@@ -243,6 +249,12 @@
         align-items: center;
         justify-content: space-between;
         margin-block-end: var(--space-2xl);
+
+        .logo-image {
+          height: 32px;
+          width: auto;
+          object-fit: contain;
+        }
       }
 
       &__close {

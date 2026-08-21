@@ -103,6 +103,8 @@
     .ind__image-wrap {
       border-radius: var(--radius-lg);
       overflow: hidden;
+      aspect-ratio: 16 / 9;
+      width: 100%;
     }
 
     .ind__detail {

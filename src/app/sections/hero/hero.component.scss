@@ -14,11 +14,15 @@
         position: absolute;
         inset: 0;
         background-image: url('/assets/images/hero/hero-mobile.webp');
-        background-size: 100% 100%;
+        background-size: cover;
         background-position: center;
         opacity: 0.15;
         z-index: 0;
         pointer-events: none;
+
+        @include laptop {
+          background-image: url('/assets/images/hero/hero.webp');
+        }
       }
     }
 
