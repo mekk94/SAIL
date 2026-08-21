@@ -20,11 +20,11 @@ export class WhyChooseUsComponent implements OnDestroy {
   readonly activeIndex = signal(0);
   
   readonly itemImages = [
-    '/assets/images/why%20choose%20us/competitive_pricing.webp',
-    '/assets/images/why%20choose%20us/strong_global_network.webp',
-    '/assets/images/why%20choose%20us/experienced_logistics_team.webp',
-    '/assets/images/why%20choose%20us/customer_focused_service.webp',
-    '/assets/images/why%20choose%20us/on_time_delivery.webp'
+    'assets/images/why_choose_us/competitive_pricing.webp',
+    'assets/images/why_choose_us/strong_global_network.webp',
+    'assets/images/why_choose_us/experienced_logistics_team.webp',
+    'assets/images/why_choose_us/customer_focused_service.webp',
+    'assets/images/why_choose_us/on_time_delivery.webp'
   ];
   
   readonly sectionRef = viewChild<ElementRef>('sectionRef');

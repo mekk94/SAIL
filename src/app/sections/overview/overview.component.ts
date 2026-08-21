@@ -15,9 +15,9 @@ export class OverviewComponent implements OnInit, OnDestroy {
   readonly i18n = inject(TranslationService);
   
   readonly images = [
-    '/assets/images/who we are/who_we_are_1.webp',
-    '/assets/images/who we are/who_we_are_2.webp',
-    '/assets/images/who we are/who_we_are_3.webp'
+    'assets/images/who_we_are/who_we_are_1.webp',
+    'assets/images/who_we_are/who_we_are_2.webp',
+    'assets/images/who_we_are/who_we_are_3.webp'
   ];
   currentImageIndex = signal(0);
   private intervalId: any;

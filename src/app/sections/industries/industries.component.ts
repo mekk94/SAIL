@@ -25,10 +25,10 @@ export class IndustriesComponent {
   };
 
   readonly itemImages = [
-    '/assets/images/Industries/fmcg_retail.webp',
-    '/assets/images/Industries/construction_infrastructure.webp',
-    '/assets/images/Industries/oil_gas.webp',
-    '/assets/images/Industries/manufacturing_industrial.webp',
-    '/assets/images/Industries/automotive_pharmaceuticals.webp'
+    'assets/images/industries/fmcg_retail.webp',
+    'assets/images/industries/construction_infrastructure.webp',
+    'assets/images/industries/oil_gas.webp',
+    'assets/images/industries/manufacturing_industrial.webp',
+    'assets/images/industries/automotive_pharmaceuticals.webp'
   ];
 }

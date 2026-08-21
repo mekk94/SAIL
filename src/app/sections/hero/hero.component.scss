@@ -13,7 +13,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background-image: url('/assets/images/hero/hero-mobile.webp');
+        background-image: url('/SAIL/assets/images/hero/hero-mobile.webp');
         background-size: cover;
         background-position: center;
         opacity: 0.15;
@@ -21,7 +21,7 @@
         pointer-events: none;
 
         @include laptop {
-          background-image: url('/assets/images/hero/hero.webp');
+          background-image: url('/SAIL/assets/images/hero/hero.webp');
         }
       }
     }
