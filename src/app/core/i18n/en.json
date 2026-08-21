@@ -18,6 +18,7 @@
     "closeMenu": "Close menu"
   },
   "hero": {
+    "brand": "SAIL",
     "headline": "Smart Automated\nIntegrated Logistics.",
     "subheadline": "Welcome to SAIL. We provide end-to-end, intelligent logistics solutions — from global freight forwarding to seamless domestic transportation.",
     "ctaPrimary": "Get a Quote",

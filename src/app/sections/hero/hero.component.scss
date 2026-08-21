@@ -49,46 +49,60 @@
     }
 
     .hero__brand-title {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: var(--space-md);
+      gap: var(--space-sm);
+      padding: var(--space-sm) var(--space-lg);
+      background: rgba(196, 137, 47, 0.25); /* brighter gold background */
+      border: 1px solid rgba(196, 137, 47, 0.6); /* stronger gold border */
+      border-radius: var(--radius-full);
       z-index: 1;
+      width: fit-content;
+      margin-bottom: var(--space-sm);
+      box-shadow: 0 4px 20px rgba(196, 137, 47, 0.3); /* brighter glow */
     }
 
     .hero__brand-text {
-      font-size: clamp(3rem, 6vw, 5rem);
-      font-weight: 900;
-      letter-spacing: 0.02em;
-      background: linear-gradient(135deg, var(--sail-gold) 0%, var(--sail-gold-hover) 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: 1.25rem; /* significantly larger */
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sail-gold);
       line-height: 1;
     }
 
     .hero__brand-line {
-      height: 3px;
-      flex: 1;
-      max-width: 80px;
-      background: linear-gradient(to right, var(--sail-gold), transparent);
-      border-radius: var(--radius-full);
+      display: none;
     }
 
     .hero__headline {
       @include heading-xl;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
       white-space: pre-line;
-      color: var(--sail-ink);
+      color: var(--sail-ink); /* fallback */
       position: relative;
       z-index: 1;
+      background: linear-gradient(135deg, var(--sail-ink) 10%, #203f60 50%, var(--sail-gold) 180%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.08));
 
       @include mobile-only {
-        font-size: var(--text-4xl);
+        font-size: 2.5rem;
       }
     }
 
     .hero__subheadline {
       @include body-lg;
-      max-width: 520px;
+      max-width: 580px;
+      line-height: 1.7;
+      color: var(--sail-ink);
+      font-weight: 500;
+      font-size: clamp(1.125rem, 2vw, 1.375rem);
     }
 
     .hero__actions {
