@@ -10,10 +10,18 @@
       grid-template-columns: 1fr;
       gap: var(--space-xl);
 
+      > .image-modern-wrapper {
+        order: 2;
+      }
+
       @include laptop {
         grid-template-columns: 1.15fr 0.85fr;
         gap: var(--space-2xl);
         align-items: center;
+
+        > .image-modern-wrapper {
+          order: -1;
+        }
       }
     }
 
