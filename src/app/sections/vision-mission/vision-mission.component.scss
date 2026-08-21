@@ -40,7 +40,7 @@
         position: absolute;
         inset: 0;
         background-image: url('/assets/images/our_vision.webp');
-        background-size: contain;
+        background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
         z-index: -2;
@@ -60,7 +60,7 @@
         position: absolute;
         inset: 0;
         background-image: url('/assets/images/our_mission.webp');
-        background-size: contain;
+        background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
         z-index: -2;
@@ -75,21 +75,24 @@
     }
 
     .vm__label {
-      font-size: var(--text-xs);
-      font-weight: var(--font-weight-semibold);
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-bold);
       text-transform: uppercase;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.15em;
       color: var(--sail-gold);
       z-index: 1;
+      margin-bottom: var(--space-sm);
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
     }
 
     .vm__statement {
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: var(--font-weight-semibold);
-      line-height: 1.35;
-      color: white; /* Override ink color */
+      font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+      color: var(--sail-white);
       text-wrap: balance;
       z-index: 1;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.5);
     }
 
     .vm__divider {
